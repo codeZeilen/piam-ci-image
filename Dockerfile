@@ -80,4 +80,3 @@ RUN pipx ensurepath && \
 # Wrap up
 #
 WORKDIR /
-RUN rm -rf /tmp/setup

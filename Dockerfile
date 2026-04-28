@@ -26,8 +26,15 @@ RUN git config --system safe.directory "*"
 ENV RSPM='https://packagemanager.posit.co/cran/__linux__/noble/latest'
 ENV RENV_CONFIG_REPOS_OVERRIDE='https://packagemanager.posit.co/cran/__linux__/noble/latest'
 
+RUN <<EOF echo "
+options(repos = c(pikpiam = 'https://pik-piam.r-universe.dev',
+                  rse = "https://rse.pik-potsdam.de/r/packages",
+                  CRAN = Sys.getenv('RSPM')))
+
+" > ~/.Rprofile
+EOF
+
 RUN Rscript -e " \
-  options(repos = c(pikpiam = 'https://pik-piam.r-universe.dev', CRAN = Sys.getenv('RSPM'))); \
   install.packages('pak'); \
   # Installing base dependencies \
   pak::pak(c('pkgdown', 'devtools', 'covr')); \

@@ -14,6 +14,7 @@ RUN apt-get update -y && \
       libcurl4-openssl-dev libssl-dev libfontconfig1-dev \
       libfreetype6-dev libfribidi-dev libharfbuzz-dev libjpeg-dev \
       libpng-dev libtiff-dev libicu-dev libgit2-dev zlib1g-dev \
+      r-base-dev \
       rsync \
     && rm -rf /var/lib/apt/lists/*
 
